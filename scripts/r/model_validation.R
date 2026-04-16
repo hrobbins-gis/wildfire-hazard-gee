@@ -6,7 +6,7 @@ library(ggplot2)
 library(caret)
 
 # Pull in full raster result
-wf_haz <- rast("D:\\GIST909\\GoogleExports\\norm_wildfire_hazard2.tif")
+wf_haz <- rast("..GoogleExports\\hazard.tif")
 
 # Compute and create full raster histogram
 # ---- Extract values (remove NA) ----
@@ -58,15 +58,15 @@ hist(vals,
 
 # Wilcox test here
 # Set working directory for sample points (created in QGIS)
-setwd('D:/GIST909/QGIS/SamplePoints')
+setwd('')
 dir()
 
-inside <- read.csv("samplevaluesInside2.csv")
-outside <- read.csv("samplevaluesOutside2.csv")
+inside <- read.csv("samplevaluesInside.csv")
+outside <- read.csv("samplevaluesOutside.csv")
 
 # Make sure the value column is labelled "WHI"
-inside_whi <- inside$WRI
-outside_whi <- outside$WRI
+inside_whi <- inside$WHI
+outside_whi <- outside$WHI
 
 # wilcox.test(inside_whi, outside_whi, alternative = "greater")
 
@@ -105,8 +105,9 @@ r_rb
 
 
 # Start of dNBR and WHI comparison
-whi <- rast("D:\\GIST909\\QGIS\\wri_clip.tif")
-dnbr <- rast("D:\\GIST909\\QGIS\\dNBR_Clipped2.tif")
+# Previously clipped to fire perimeter
+whi <- rast(..whi_clip.tif")
+dnbr <- rast("..dnbr_clip.tif")
 
 plot(whi)
 plot(dnbr)
